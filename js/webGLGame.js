@@ -9,13 +9,33 @@ function WebGLGame(container) {
     self._childs = [];
     self._isActive = false;
     self.init = function() {
-        self.renderer = new THREE.CanvasRenderer();
         if (self._container === undefined)
             self._container = document.body;
-        self._container.appendChild(self.renderer.domElement);
-        self.camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 500);
+
         self.scene = new THREE.Scene();
+        self.camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 1, 1000);
+        self.camera.position.y = 150;
+        self.camera.position.z = 500;
         self.scene.add(self.camera);
+
+        self.renderer = new THREE.CanvasRenderer();
+        self.renderer.setClearColor(0x020202);
+        self.renderer.setSize(window.innerWidth, window.innerHeight);
+
+        /* test webgl */
+
+
+//        self.camera = new THREE.Camera(70, window.innerWidth / window.innerHeight, 1, 1000);
+//        self.scene.add(self.camera);
+//        self.camera.position.z = 350;
+
+
+//        self.camera.lookAt(cube);
+//        cube.position.set(0, 0, 0);
+
+        self._container.appendChild(self.renderer.domElement);
+
+
         window.addEventListener('resize', self.windowResize, false);
         window.addEventListener('blur', self.blur, false);
         window.addEventListener('click', self.focus, false);
@@ -52,6 +72,7 @@ function WebGLGame(container) {
             }
         }
         self.renderer.render(self.scene, self.camera);
+        console.log("loop")
         if (self._isActive)
             requestAnimationFrame(self.run);
     };

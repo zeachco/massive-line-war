@@ -19,7 +19,7 @@ function Cube(scene) {
         self.vx = self.vx + Math.sin(self.mesh.rotation.y) * speed;
         self.vz = self.vz + Math.cos(self.mesh.rotation.y) * speed;
 //        self.addSmoke(0.4);
-        console.log("cube xyz", Math.round(self.mesh.position.x), Math.round(self.mesh.position.y), Math.round(self.mesh.position.z));
+//        console.log("cube xyz", Math.round(self.mesh.position.x), Math.round(self.mesh.position.y), Math.round(self.mesh.position.z));
     };
     this.update = function() {
         if (self.mesh.position.y > 0) {

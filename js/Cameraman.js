@@ -32,6 +32,6 @@ function Cameraman() {
         self._target = target;
     };
     self._position = function() {
-
+        self._target.camera.lookAt(self._target.mesh.position);
     };
 }
