@@ -1,3 +1,4 @@
-
-window.game = new Game();
-window.game.start();
+var game = new Game();
+var player = new Player();
+game.start();
+game.addObj(player);
