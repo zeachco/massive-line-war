@@ -10,6 +10,7 @@ function Game() {
         self.focus();
     };
     self.run = function() {
+        console.log("running game...");
         if (self._isActive)
             requestAnimFrame(self.run);
         for (var i = 0; i < self._childs.length;i++){
