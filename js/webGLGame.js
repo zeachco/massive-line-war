@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-WebGLGame.prototype = new Game();
 function WebGLGame(container) {
     var self = this;
     self._container = container;
@@ -17,11 +16,10 @@ function WebGLGame(container) {
         self.scene = new THREE.Scene();
         self.scene.add(self.camera);
         window.addEventListener('resize', self.windowResize, false);
-        self.windowResize();
-        window.onblur = function(){
+        self._container.onblur = function() {
             self.blur();
         };
-        window.onclick = self.focus;
+        self._container.addEventListener('onclick', self.focus, false);
         self.focus();
     };
     self.windowResize = function() {
