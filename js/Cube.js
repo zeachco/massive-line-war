@@ -18,14 +18,16 @@ function Cube(scene) {
     this.trust = function(speed) {
         self.vx = self.vx + Math.sin(self.mesh.rotation.y) * speed;
         self.vz = self.vz + Math.cos(self.mesh.rotation.y) * speed;
-//        self.addSmoke(0.4);
+        self.addSmoke(0.4);
 //        console.log("cube xyz", Math.round(self.mesh.position.x), Math.round(self.mesh.position.y), Math.round(self.mesh.position.z));
     };
-    this.update = function() {
+    this.update = function(msDelta) {
+        msDelta = msDelta/100;
         if (self.mesh.position.y > 0) {
             self.vy -= 0.1;
         } else {
             self.vy = 0;
+            self.mesh.position.y = 0;
             if (GAMEPAD.jump)
                 self.vy += 2;
             if (GAMEPAD.up)
@@ -41,11 +43,11 @@ function Cube(scene) {
         }
         self.vz /= 1.1;
         self.va /= 1.2;
-        self.mesh.rotation.y += self.va;
-        self.mesh.position.x += self.vx;
-        self.mesh.position.y += self.vy;
-        self.mesh.position.z += self.vz;
-//        self.addSmoke(0.2);
+        self.mesh.rotation.y += (self.va * msDelta);
+        self.mesh.position.x += (self.vx * msDelta);
+        self.mesh.position.y += (self.vy * msDelta);
+        self.mesh.position.z += (self.vz * msDelta);
+        self.addSmoke(0.2);
     };
     this.addSmoke = function(a) {
         var x = self.vx + Math.cos(self.mesh.rotation.y) * -7;

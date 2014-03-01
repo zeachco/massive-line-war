@@ -10,3 +10,7 @@ if (!window.requestAnimationFrame) {
                 };
     })();
 }
+
+window.requestAnimationFrame = function(/* function FrameRequestCallback */ callback, /* DOMElement Element */ element) {
+    window.setTimeout(callback, 1000 / 30);
+};
