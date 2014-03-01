@@ -8,4 +8,5 @@ function Player() {
         if (GAMEPAD.up)
             console.log("player move forward");
     };
+    self.init();
 }
