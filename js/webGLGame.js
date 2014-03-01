@@ -18,7 +18,11 @@ function WebGLGame(container) {
         self.scene.add(self.camera);
         window.addEventListener('resize', self.windowResize, false);
         self.windowResize();
-        self.run();
+        window.onblur = function(){
+            self.blur();
+        };
+        window.onclick = self.focus;
+        self.focus();
     };
     self.windowResize = function() {
         var w = window.innerWidth;
@@ -31,8 +35,14 @@ function WebGLGame(container) {
     self.addObject = function(obj) {
         this._childs.push(obj);
     };
-    sefl.blur = function(){
-        
+    self.blur = function() {
+        self._isActive = false;
+    };
+    self.focus = function() {
+        if (!self._isActive) {
+            self._isActive = true;
+            self.run();
+        }
     };
     self.run = function() {
         for (var i = 0; i < self._childs.length; i++) {
