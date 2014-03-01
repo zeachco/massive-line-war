@@ -12,8 +12,8 @@
 function CameraControl(camera) {
     var self = this;
     self.init = function() {
-        camera.position.z = 20;
-        camera.position.y = 20;
+//        camera.position.z = 20;
+//        camera.position.y = 20;
 //        camera.rotation.x = -0.2;
         window.cam = camera;
     };

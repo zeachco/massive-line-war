@@ -1,0 +1,17 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 1-Mar-2014, 3:28:55 PM
+    Author     : Olivier Rousseau-Guyot <olivier@zsoft.ca>
+*/
+
+body {
+    font-family: Monospace;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+    overflow:hidden; 
+}
