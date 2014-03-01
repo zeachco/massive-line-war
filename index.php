@@ -8,6 +8,7 @@ and open the template in the editor.
     <head>
         <meta charset="UTF-8">
         <title>MOBA game prod. page</title>
+        <link rel="stylesheet" type="text/css" href="css/webgl.css">
     </head>
     <body>
         <?php
