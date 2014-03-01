@@ -7,6 +7,7 @@ function WebGLGame(container) {
     var self = this;
     self._container = container;
     self._childs = [];
+    self._isActive = false;
     self.init = function() {
         self.renderer = new THREE.CanvasRenderer();
         if (self._container === undefined)
@@ -16,10 +17,8 @@ function WebGLGame(container) {
         self.scene = new THREE.Scene();
         self.scene.add(self.camera);
         window.addEventListener('resize', self.windowResize, false);
-        self._container.onblur = function() {
-            self.blur();
-        };
-        self._container.addEventListener('onclick', self.focus, false);
+        window.addEventListener('blur', self.blur, false);
+        window.addEventListener('click', self.focus, false);
         self.focus();
     };
     self.windowResize = function() {
@@ -34,10 +33,12 @@ function WebGLGame(container) {
         this._childs.push(obj);
     };
     self.blur = function() {
+        console.log("focus losed");
         self._isActive = false;
     };
     self.focus = function() {
         if (!self._isActive) {
+            console.log("unpause");
             self._isActive = true;
             self.run();
         }
@@ -51,7 +52,8 @@ function WebGLGame(container) {
             }
         }
         self.renderer.render(self.scene, self.camera);
-        requestAnimationFrame(self.run);
+        if (self._isActive)
+            requestAnimationFrame(self.run);
     };
     self.init();
 }
