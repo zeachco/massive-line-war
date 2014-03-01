@@ -7,7 +7,7 @@ and open the template in the editor.
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>MOBA game prod. page</title>
+        <title>WebGL sandbox</title>
         <link rel="stylesheet" type="text/css" href="css/webgl.css">
     </head>
     <body>
