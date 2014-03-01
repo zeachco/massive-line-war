@@ -33,12 +33,12 @@ function WebGLGame(container) {
         this._childs.push(obj);
     };
     self.blur = function() {
-        console.log("focus losed");
+        console.log("focus losed, game is paused");
         self._isActive = false;
     };
     self.focus = function() {
         if (!self._isActive) {
-            console.log("unpause");
+            console.log("game is running");
             self._isActive = true;
             self.run();
         }

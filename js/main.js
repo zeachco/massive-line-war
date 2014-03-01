@@ -1,5 +1,4 @@
 var game = new WebGLGame();
-game.init();
 
 var player = new Player();
 game.addObject(player);
