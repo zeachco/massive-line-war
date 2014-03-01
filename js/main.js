@@ -1,8 +1,12 @@
 var game = new WebGLGame();
-var player = new Player();
-var cube = new Cube(game.scene);
-var camera = new CameraControl(game.camera);
 game.init();
+
+var player = new Player();
 game.addObject(player);
-game.addObject(camera);
+
+var cube = new Cube(game.scene);
 game.addObject(cube);
+
+var cameraman = new Cameraman();
+cameraman.follow({camera: game.camera, mesh: cube.mesh, distance: 10, smooth: 10});
+game.addObject(cameraman);
