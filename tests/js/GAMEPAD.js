@@ -5,7 +5,8 @@
  */
 
 describe("GAMEPAD", function() {
-    it("should bind keys", function() {
-        expect("1").toEqual("1");
+    it("should return true/false depending on the key state", function() {
+        expect(GAMEPAD[17]).not.toEqual(true);
+//        window.fireEvent("keydown");
     });
 });
