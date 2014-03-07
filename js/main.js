@@ -1,5 +1,5 @@
 var app = null;
-require(["utils", "Cameraman", "three.min", "webGLGame", "Cube", "GAMEPAD"], function() {
+require(["gameEngine/utils", "gameEngine/Cameraman", "lib/three.min", "gameEngine/webGLGame", "Cube", "gameEngine/GAMEPAD"], function() {
     var app = new WebGLGame();
     app._useTimeDelta = false;
 
