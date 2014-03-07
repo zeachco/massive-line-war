@@ -1,16 +1,18 @@
-window.onready = function() {
-    var game = new WebGLGame();
+var app = null;
 
-    window.cube = new Cube(game.scene);
-    game.addObject(cube);
+require(["utils", "Cameraman", "three.min", "webGLGame", "Cube", "GAMEPAD"], function() {
+    var app = new WebGLGame();
+    app._useTimeDelta = false;
 
+    window.cube = new Cube(app.scene);
+    app.addObject(cube);
+    
     var cameraman = new Cameraman();
     cameraman.follow(cube.mesh);
-    cameraman.place({
-        vec3: cube.mesh.position,
-        mode: "relative",
-        smooth: 15
-    });
-
-    game.addObject(cameraman);
-};
+//    cameraman.place({
+//        vec3: cube.mesh.position,
+//        mode: "relative",
+//        smooth: 15
+//    });
+    app.addObject(cameraman);
+});
