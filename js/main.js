@@ -1,6 +1,5 @@
 var app = null;
 require(["utils", "Cameraman", "three.min", "webGLGame", "Cube", "GAMEPAD"], function() {
-    
     var app = new WebGLGame();
     app._useTimeDelta = false;
 
