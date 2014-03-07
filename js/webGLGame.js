@@ -8,6 +8,7 @@ function WebGLGame(container) {
     self._container = container;
     self._childs = [];
     self._isActive = false;
+    self._useTimeDelta = true;
     self.init = function() {
         if (self._container === undefined)
             self._container = document.body;
@@ -19,7 +20,7 @@ function WebGLGame(container) {
         self.scene.add(self.camera);
 
         self.renderer = new THREE.CanvasRenderer();
-        self.renderer.setClearColor(0x020202);
+        self.renderer.setClearColor(0x464646);
         self.renderer.setSize(window.innerWidth, window.innerHeight);
 
         self._container.appendChild(self.renderer.domElement);
@@ -41,12 +42,12 @@ function WebGLGame(container) {
         this._childs.push(obj);
     };
     self.blur = function() {
-        console.log("focus losed, game is paused");
+        console.log("focus losed, application is paused");
         self._isActive = false;
     };
     self.focus = function() {
         if (!self._isActive) {
-            console.log("game is running");
+            console.log("application is running");
             self._lastTick = Date.now();
             self._isActive = true;
             self.run();
@@ -66,10 +67,12 @@ function WebGLGame(container) {
             requestAnimationFrame(self.run);
     };
     self.getTimeDelta = function() {
+        if (!self._useTimeDelta)
+            return 17;
         var now = Date.now();
         var dt = now - self._lastTick;
         self._lastTick = now;
-        console.log(dt);
+//        console.log(dt);
         return dt;
     };
     self.init();
