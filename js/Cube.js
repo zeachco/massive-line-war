@@ -50,15 +50,15 @@ function Cube(scene) {
         self.addSmoke(0.2);
     };
     this.addSmoke = function(a) {
-        var x = self.vx + Math.cos(self.mesh.rotation.y) * -7;
-        var np = PARTICLES.add(self.scene, {
-            x: self.mesh.position.x + x,
-            y: self.mesh.position.y,
-            z: self.mesh.position.z + z
-        });
-        np.mesh.rotation.vy = self.mesh.rotation.vy;
-        np.alpha = 0.1 + Math.sin(self.mesh.rotation.y) * -7;
-        var z = self.vz + Math.random() * a * 2;
+//        var x = self.vx + Math.cos(self.mesh.rotation.y) * -7;
+//        var np = PARTICLES.add(self.scene, {
+//            x: self.mesh.position.x + x,
+//            y: self.mesh.position.y,
+//            z: self.mesh.position.z + z
+//        });
+//        np.mesh.rotation.vy = self.mesh.rotation.vy;
+//        np.alpha = 0.1 + Math.sin(self.mesh.rotation.y) * -7;
+//        var z = self.vz + Math.random() * a * 2;
     };
     this.init();
 }

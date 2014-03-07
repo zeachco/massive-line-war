@@ -9,21 +9,7 @@ and open the template in the editor.
         <meta charset="UTF-8">
         <title>WebGL sandbox</title>
         <link rel="stylesheet" type="text/css" href="css/webgl.css">
+        <script data-main='js/main.js' src='js/require.js'></script>  
     </head>
-    <body>
-        <?php
-        $exclude = array("main.js");
-        $dir = "js";
-        if ($handle = opendir($dir)) {
-            while (false !== ($entry = readdir($handle))) {
-                if (in_array($entry, $exclude))
-                    continue;
-                if (substr($entry, -3) == ".js")
-                    echo "<script src='$dir/$entry'></script>";
-            }
-            echo "<script src='$dir/main.js'></script>";
-            closedir($handle);
-        }
-        ?>
-    </body>
+    <body></body>
 </html>
