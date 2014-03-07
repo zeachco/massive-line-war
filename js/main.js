@@ -8,10 +8,10 @@ require(["utils", "Cameraman", "three.min", "webGLGame", "Cube", "GAMEPAD"], fun
     
     var cameraman = new Cameraman();
     cameraman.follow(cube.mesh);
-    cameraman.place({
-        vec3: cube.mesh.position,
-        mode: "relative",
-        smooth: 15
-    });
+//    cameraman.place({
+//        vec3: cube.mesh.position,
+//        mode: "relative",
+//        smooth: 15
+//    });
     app.addObject(cameraman);
 });
