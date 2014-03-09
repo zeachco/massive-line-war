@@ -1,0 +1,2 @@
+
+karma start "karmaDeamon.js"
