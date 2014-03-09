@@ -55,10 +55,12 @@ function WebGLGame(container) {
     };
     self.run = function() {
         var msDelta = self.getTimeDelta();
+        console.log("loopDelta : "+msDelta);
         for (var i = 0; i < self._childs.length; i++) {
             try {
                 self._childs[i].update(msDelta);
             } catch (e) {
+                debugger
                 console.warn(e);
             }
         }

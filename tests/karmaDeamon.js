@@ -13,7 +13,7 @@ module.exports = function(config) {
 //            {pattern: 'tests/*.js', included: false}
 //        ],
         files: [
-            'js/*.js',
+            'js/*/*.js',
             'tests/js/*.js'
         ],
         // list of files to exclude
