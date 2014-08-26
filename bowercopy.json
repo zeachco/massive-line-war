@@ -1,0 +1,12 @@
+{
+    "libs": {
+        "options": {
+            "destPrefix": "app/js/vendor",
+            "clean": true
+        },
+        "files": {
+            "three.js": "threejs/build/three.js",
+            "require.js": "requirejs/require.js"
+        }
+    }
+}
