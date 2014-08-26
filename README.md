@@ -1,4 +1,4 @@
-drunken-bear
+GG Framework
 ============
 
-sandbox to write canvas javascript games where game object are implemented as plugins
+A webGL game engine based on object injection using three.js
