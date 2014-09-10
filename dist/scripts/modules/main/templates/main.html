@@ -1,0 +1,24 @@
+<!-- Add your site or application content here -->
+<div class="container">
+  <div class="header">
+    <ul class="nav nav-pills pull-right" ng-controller="MainMenuController as menuCtrl">
+      <li ng-class="{ active: menuCtrl.isSelected('HOME') }">
+        <a ng-click="menuCtrl.selectMenu('HOME')" ng-href="#" translate="HOME"></a>
+      </li>
+      <li ng-class="{ active: menuCtrl.isSelected('ABOUT') }">
+        <a ng-click="menuCtrl.selectMenu('ABOUT')" ng-href="#/about" translate="ABOUT"></a>
+      </li>
+      <li ng-class="{ active: menuCtrl.isSelected('CONTACT') }">
+        <a ng-click="menuCtrl.selectMenu('CONTACT')" ng-href="#/contact" translate="CONTACT"></a>
+      </li>
+<!-- navAnchor (do not delete!)-->
+    </ul>
+  </div>
+
+  <lang-directive></lang-directive>
+  <div ng-view></div>
+
+  <div class="footer">
+    <p class="text-muted">{{appInfo.name}} v{{appInfo.version}} Mode:{{envMode}}</p>
+  </div>
+</div>
