@@ -1,14 +1,12 @@
 define([
   'engine/utils',
   'engine/Cameraman',
-  'lib/three.min',
-  'engine/webGLGame',
+  'engine/WebGLGame',
   'game/Cube',
   'GAMEPAD'
 ],function(
   utils,
   Cameraman,
-  THREE,
   WebGLGame,
   Cube,
   GAMEPAD
