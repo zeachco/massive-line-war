@@ -56,7 +56,7 @@ define(['threejs'], function(THREE){
       };
       self.run = function() {
         var msDelta = self.getTimeDelta();
-        console.log('loopDelta : '+msDelta);
+        //console.log('loopDelta : '+msDelta);
         for (var i = 0; i < self._childs.length; i++) {
           try {
             self._childs[i].update(msDelta);
@@ -70,14 +70,15 @@ define(['threejs'], function(THREE){
         }
       };
         self.getTimeDelta = function() {
-          if (!self._useTimeDelta)
+          if (!self._useTimeDelta){
             return 17;
-            var now = Date.now();
-            var dt = now - self._lastTick;
-            self._lastTick = now;
-            //        console.log(dt);
-            return dt;
-          };
-          self.init();
-        }
+          }
+          var now = Date.now();
+          var dt = now - self._lastTick;
+          self._lastTick = now;
+          //        console.log(dt);
+          return dt;
+        };
+        self.init();
+      };
 });
