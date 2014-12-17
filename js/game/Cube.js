@@ -1,6 +1,6 @@
-define(['threejs', 'GAMEPAD'], function(THREE, GAMEPAD){
+define(['threejs', 'engine/gameObject', 'engine/GAMEPAD'], function(THREE, gameObject, GAMEPAD){
   'use strict';
-  return function Cube(scene) {
+  return gameObject(function Cube(scene) {
     var self = this;
     this.scene = scene;
     this.vx = 0;
@@ -68,5 +68,5 @@ define(['threejs', 'GAMEPAD'], function(THREE, GAMEPAD){
       //        var z = self.vz + Math.random() * a * 2;
     };
     this.init();
-  };
+  });
 });

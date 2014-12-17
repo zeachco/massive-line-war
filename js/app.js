@@ -3,7 +3,7 @@ define([
   'engine/Cameraman',
   'engine/WebGLGame',
   'game/Cube',
-  'GAMEPAD'
+  'engine/GAMEPAD'
 ],function(
   utils,
   Cameraman,

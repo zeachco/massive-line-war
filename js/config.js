@@ -1,7 +1,6 @@
 require.config({
   paths:{
-    'threejs': '../libs/threejs/build/three',
-    'GAMEPAD': './engine/GAMEPAD'
+    'threejs': '../libs/threejs/build/three'
   },
   shim: {
     threejs: {
