@@ -1,5 +1,6 @@
 define(['threejs', 'engine/gameObject', 'engine/GAMEPAD'], function(THREE, gameObject, GAMEPAD){
   'use strict';
+  GAMEPAD.bind(32, 'jump');
   return gameObject(function Cube(scene) {
     var self = this;
     this.scene = scene;
@@ -15,7 +16,6 @@ define(['threejs', 'engine/gameObject', 'engine/GAMEPAD'], function(THREE, gameO
       self.mesh = new THREE.Mesh(geometry, material);
       self.mesh.rotation.y = Math.PI;
       self.scene.add(self.mesh);
-      GAMEPAD.bind(32, 'jump');
     };
     this.trust = function(speed) {
       self.vx = self.vx + Math.sin(self.mesh.rotation.y) * speed;

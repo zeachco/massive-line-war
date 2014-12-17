@@ -1,15 +1,15 @@
 define([
-  'engine/utils',
-  'engine/Cameraman',
   'engine/WebGLGame',
-  'game/Cube',
-  'engine/GAMEPAD'
+  'engine/Cameraman',
+  'engine/GAMEPAD',
+  'engine/utils',
+  'game/Cube'
 ],function(
-  utils,
-  Cameraman,
   WebGLGame,
-  Cube,
-  GAMEPAD
+  Cameraman,
+  GAMEPAD,
+  utils,
+  Cube
 ) {
   'use strict';
 
@@ -24,12 +24,10 @@ define([
     app.cube = new Cube(app.scene);
     app.addObject(app.cube);
 
-    var cameraman = new Cameraman();
-    cameraman.follow(app.cube.mesh);
-//    cameraman.place({
-//        vec3: cube.mesh.position,
-//        mode: "relative",
-//        smooth: 15
-//    });
+    var cameraman = new Cameraman({
+      target: app.cube,
+      smooth: 15,
+      mode: 'relative'
+    });
     app.addObject(cameraman);
 });

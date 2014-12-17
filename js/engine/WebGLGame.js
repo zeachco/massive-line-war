@@ -56,7 +56,6 @@ define(['threejs'], function(THREE){
       };
       self.run = function() {
         var msDelta = self.getTimeDelta();
-        //console.log('loopDelta : '+msDelta);
         for (var i = 0; i < self._childs.length; i++) {
           try {
             self._childs[i].update(msDelta);
