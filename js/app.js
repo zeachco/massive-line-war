@@ -20,14 +20,16 @@ define([
   GAMEPAD.init(window);
 
   var app = new WebGLGame();
-    app._useTimeDelta = false;
-    app.cube = new Cube(app.scene);
-    app.addObject(app.cube);
+  app._useTimeDelta = false;
+  app.cube = new Cube(app.scene);
+  app.addObject(app.cube);
 
-    var cameraman = new Cameraman({
-      target: app.cube,
-      smooth: 15,
-      mode: 'relative'
-    });
-    app.addObject(cameraman);
+  var cameraman = new Cameraman({
+    target: app.cube,
+    smooth: 15,
+    mode: 'relative'
+  });
+  app.addObject(cameraman);
+
+  return app;
 });
