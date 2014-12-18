@@ -1,12 +1,21 @@
-define(['engine/gameObject'], function(gameObject){
+define([
+  'engine/gameObject'
+], function(
+  gameObject
+){
   'use strict';
+
   return gameObject(function Cameraman() {
     var self = this;
+    var target;
+    function position(){
+      self._target.camera.lookAt(self._target.mesh.position);
+    }
     self.update = function() {
-      if (self._target){
-        self._position();
+      if (target){
+        position();
       }else{
-        console.log('cameraman is lost...\nno target defined');}
+        console.log('cameraman is lost...\nno target defined', target);}
       };
       /**
       * camera behaviour object
@@ -19,11 +28,8 @@ define(['engine/gameObject'], function(gameObject){
       * @param {type} target
       * @returns {undefined}
       */
-      self.follow = function(target) {
-        self._target = target;
-      };
-      self._position = function() {
-        self._target.camera.lookAt(self._target.mesh.position);
+      self.follow = function(t) {
+        target = t || null;
       };
     });
   });

@@ -1,15 +1,15 @@
 define(['threejs', 'engine/gameObject', 'engine/GAMEPAD'], function(THREE, gameObject, GAMEPAD){
   'use strict';
   GAMEPAD.bind(32, 'jump');
-  return gameObject(function Cube(scene) {
+  return gameObject(function Cube(opts) {
     var self = this;
-    this.scene = scene;
     this.vx = 0;
     this.vy = 0;
     this.vz = 0;
     this.va = 0;
+    this.param(opts);
     this.init = function() {
-      var geometry = new THREE.CubeGeometry(5, 3, 10);
+      var geometry = new THREE.BoxGeometry(5, 3, 10);
       var material = new THREE.MeshBasicMaterial({
         color: '#f00'
       });
@@ -67,6 +67,6 @@ define(['threejs', 'engine/gameObject', 'engine/GAMEPAD'], function(THREE, gameO
       //        np.alpha = 0.1 + Math.sin(self.mesh.rotation.y) * -7;
       //        var z = self.vz + Math.random() * a * 2;
     };
-    this.init();
+    this.build();
   });
 });
