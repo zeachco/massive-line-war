@@ -11,7 +11,7 @@ define(['threejs', 'engine/gameObject', 'engine/GAMEPAD'], function(THREE, gameO
     var w = 10000, h = 5000;
     var seaGeo, seaTex;
     this.init = function() {
-      seaTex = THREE.ImageUtils.loadTexture('images/smoke.gif');
+      seaTex = THREE.ImageUtils.loadTexture('images/smoke.png');
       seaTex.wrapS = seaTex.wrapT = THREE.RepeatWrapping;
       seaTex.repeat.set(4, 2);
       var seaMat = new THREE.MeshPhongMaterial({

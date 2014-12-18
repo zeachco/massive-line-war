@@ -46,7 +46,7 @@ function(
         self.vy /= 1.05;
       }
       self.vz /= 1.05;
-      self.va /= 1.05;
+      self.va /= 1.1;
       self.mesh.rotation.y += (self.va * msDelta);
       self.mesh.position.x += (self.vx * msDelta);
       self.mesh.position.y += (self.vy * msDelta);
