@@ -16,8 +16,8 @@ define(['threejs'], function(THREE){
 
         self.scene = new THREE.Scene();
         self.camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 1, 1000);
-        self.camera.position.y = 150;
-        self.camera.position.z = 500;
+        self.camera.position.y = 15;
+        self.camera.position.z = 50;
         self.scene.add(self.camera);
 
         self.renderer = new THREE.WebGLRenderer();

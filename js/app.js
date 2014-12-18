@@ -33,8 +33,10 @@ define([
     mode: 'relative'
   });
 
-  app.floor = new Floor({ engine: app });
-  app.floor.target = app.cameraman;
+  app.floor = new Floor({
+    engine: app,
+    target: app.cameraman
+  });
 
   return app;
 });
