@@ -24,6 +24,10 @@ define(['threejs'], function(THREE){
         self.renderer.setClearColor(0x464646);
         self.renderer.setSize(window.innerWidth, window.innerHeight);
 
+        var directionalLight = new THREE.DirectionalLight( 0xffffff, 0.5 );
+        directionalLight.position.set( 0, 1, 0 );
+        self.scene.add( directionalLight );
+
         self._container.appendChild(self.renderer.domElement);
 
         window.addEventListener('resize', self.windowResize, false);
