@@ -1,4 +1,12 @@
-define(['threejs', 'engine/gameObject', 'engine/GAMEPAD'], function(THREE, gameObject, GAMEPAD){
+define([
+  'threejs',
+  'engine/gameObject',
+  'engine/GAMEPAD'],
+function(
+  THREE,
+  gameObject,
+  GAMEPAD
+){
   'use strict';
   GAMEPAD.bind(32, 'jump');
   return gameObject(function Cube(opts) {
