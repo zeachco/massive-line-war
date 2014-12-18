@@ -24,29 +24,28 @@ define(['threejs', 'engine/gameObject', 'engine/GAMEPAD'], function(THREE, gameO
       //        console.log('cube xyz', Math.round(self.mesh.position.x), Math.round(self.mesh.position.y), Math.round(self.mesh.position.z));
     };
     this.update = function(msDelta) {
-      msDelta = msDelta/100;
       if (self.mesh.position.y > 0) {
-        self.vy -= 0.1;
+        self.vy -= 0.005;
       } else {
         self.vy = 0;
         self.mesh.position.y = 0;
         if (GAMEPAD.jump){
-          self.vy += 2;
+          self.vy += 0.1;
         }
         if (GAMEPAD.up){
-          self.trust(0.2);
+          self.trust(0.01);
         }
         if (GAMEPAD.down){
-          self.trust(-0.1);
+          self.trust(-0.005);
         }
         if (GAMEPAD.left){
-          self.va += 0.02;
+          self.va += 0.001;
         }
         if (GAMEPAD.right){
-          self.va -= 0.02;
+          self.va -= 0.001;
         }
-        self.vx /= 1.1;
-        self.vy /= 1.1;
+        self.vx /= 1.001;
+        self.vy /= 1.001;
       }
       self.vz /= 1.1;
       self.va /= 1.2;
