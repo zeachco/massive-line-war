@@ -29,26 +29,16 @@ define(['threejs', 'engine/gameObject', 'engine/GAMEPAD'], function(THREE, gameO
       } else {
         self.vy = 0;
         self.mesh.position.y = 0;
-        if (GAMEPAD.jump){
-          self.vy += 0.1;
-        }
-        if (GAMEPAD.up){
-          self.trust(0.01);
-        }
-        if (GAMEPAD.down){
-          self.trust(-0.005);
-        }
-        if (GAMEPAD.left){
-          self.va += 0.001;
-        }
-        if (GAMEPAD.right){
-          self.va -= 0.001;
-        }
-        self.vx /= 1.001;
-        self.vy /= 1.001;
+        if (GAMEPAD.jump){ self.vy += 0.1; }
+        if (GAMEPAD.up){ self.trust(0.01); }
+        if (GAMEPAD.down){ self.trust(-0.005); }
+        if (GAMEPAD.left){ self.va += 0.001; }
+        if (GAMEPAD.right){ self.va -= 0.001; }
+        self.vx /= 1.05;
+        self.vy /= 1.05;
       }
-      self.vz /= 1.1;
-      self.va /= 1.2;
+      self.vz /= 1.05;
+      self.va /= 1.05;
       self.mesh.rotation.y += (self.va * msDelta);
       self.mesh.position.x += (self.vx * msDelta);
       self.mesh.position.y += (self.vy * msDelta);
