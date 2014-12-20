@@ -28,9 +28,9 @@ define(['threejs', 'engine/gameObject', 'engine/GAMEPAD'], function(THREE, gameO
     };
     this.update = function(msDelta) {
       self.mesh.position.x = self.options.engine.camera.position.x;
-      self.mesh.position.y = self.options.engine.camera.position.y-20;
+      self.mesh.position.y = self.options.engine.camera.position.y-25;
       self.mesh.position.z = self.options.engine.camera.position.z;
-      //seaTex.offset.set(self.x / w * seaTex.repeat.x, self.y / h * seaTex.repeat.y);
+      seaTex.offset.set(self.mesh.position.x / w * seaTex.repeat.x, self.mesh.position.z / h * seaTex.repeat.y);
 
     };
     this.build();
