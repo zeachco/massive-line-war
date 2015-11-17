@@ -33,7 +33,7 @@ app.path.add(400, 450);
 app.path.add(400, 600);
 
 app.sheep = new Sheep();
-app.sheep.spawn(200, 50);
+app.sheep.spawn(200, 5);
 
 app.wolf = new Wolf();
-app.wolf.spawn(100, 50);
+app.wolf.spawn(100, 5);

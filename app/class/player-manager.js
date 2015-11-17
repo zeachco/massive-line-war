@@ -7,62 +7,56 @@ var store = window.localStorage;
 
 class PlayerManager {
   constructor() {
-    this.getLocalPlayer();
     firebasePlayers.on('value', this.update.bind(this));
   }
 
-  getLocalPlayer() {
-    this.localID = store.getItem('player') || 'null';
-    if (this.localID === 'null') {
-      delete this.localID;
-    }
-    if (!this.localID) {
-      let name = prompt('what\'s your name?', 'Anonymous defender');
-      if (name) {
-        this.localID = this.remoteCreate(name);
-      }
-    }
-  }
-
-  remoteCreate(name) {
-    let insertion = firebasePlayers.push();
-    let id = insertion.key();
-    store.setItem('player', id);
-
-    // // auto disconnect
-    // insertion.onDisconnect().update({
-    //   endedAt: Firebase.ServerValue.TIMESTAMP
-    // });
-    //
-    // // insert TIMESTAMP
-    // insertion.update({
-    //   startedAt: Firebase.ServerValue.TIMESTAMP
-    // });
-
-    // set player attributes
-    insertion.set({
-      name: name
-    });
-    return id;
-  }
-
   update(data) {
-    var rows = '';
-    var players = data.val();
-    this.localPlayer = players[this.localID];
-    this.renderBoard(data);
-    console.log(this.localPlayer);
-
-    if (this.localPlayer) {
-      console.info(`Player reconnected with ${this.localPlayer.name} (${this.localID})`);
-    } else if (this.localID) {
-      alert('You have been disconnected');
-      delete store.player;
-      window.location.reload();
-    } else {
-      console.log('Spectator mode');
+    console.log('players changes', data.val());
+    this.localPlayer = null;
+    data.forEach(function(snap) {
+      console.log(snap.val(), snap.key(), this.localID);
+      if (snap.key() === this.localID) {
+        console.info(`Player reconnected with ${snap.val().name} (${snap.key()})`);
+        this.localPlayer = snap.val();
+      }
+    }.bind(this));
+    if (!this.localPlayer) {
+      this.remoteCreate();
+      return;
     }
+    this.renderBoard(data);
+  }
 
+  get localID() {
+    if (this._localID) {
+      return this._localID;
+    }
+    this._localID = store.getItem('player') || 'null';
+    if (this._localID !== 'null') {
+      return this._localID;
+    } else {
+      delete this._localID;
+      return null;
+    }
+  }
+  set localID(val) {
+    this._localID = val;
+    store.setItem('player', val);
+  }
+
+  remoteCreate() {
+    let name = prompt('what\'s your name?', 'Anonymous defender');
+    if (name) {
+      let insertion = firebasePlayers.push();
+      this.localID = insertion.key();
+      insertion.update({
+        name: name
+      });
+      insertion.update({
+        startedAt: Firebase.ServerValue.TIMESTAMP
+      });
+      insertion.onDisconnect().remove();
+    }
   }
 
   createBoard() {

@@ -22,7 +22,8 @@ class Path extends BaseObject {
         x: wp.x,
         y: wp.y,
         radius: wp.radius,
-        fill: this.color,
+        fill: 'rgba(200,200,200,0.2)',
+        stroke: this.color,
         lineWidth: 2
       });
     }.bind(this));
