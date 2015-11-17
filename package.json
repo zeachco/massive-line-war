@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --progress --colors --watch",
-    "test": "webpack --progress && eslint public/bundle.js && exit 0"
+    "test": "esw app/* && exit 0"
   },
   "author": "Olivier Rousseau",
   "license": "MIT",
@@ -14,6 +14,7 @@
     "babel-loader": "^5.3.3",
     "css-loader": "^0.21.0",
     "eslint": "^1.9.0",
+    "eslint-watch": "^2.1.3",
     "firebase": "^2.3.1",
     "style-loader": "^0.13.0",
     "uglify-loader": "^1.2.0",
