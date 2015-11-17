@@ -56,13 +56,15 @@ class Monster extends BaseObject {
     }
   }
   move() {
-    var deltaX = this.x - app.path.waypoints[this.nextWaypoint].x;
-    var deltaY = this.y - app.path.waypoints[this.nextWaypoint].y;
-    var distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
-    deltaX /= distance;
-    deltaY /= distance;
-    this.x += this.speed * deltaX * this._time.delta/10;
-    this.y += this.speed * deltaY * this._time.delta/10;
+    let targetWaypoint = app.path.waypoints[this.nextWaypoint]
+    let distX = targetWaypoint.x - this.x;
+    let distY = targetWaypoint.y - this.y;
+    let distance = Math.sqrt(Math.pow(distX, 2) + Math.pow(distY, 2));
+    if (distance < targetWaypoint.radius && app.path.waypoints[this.nextWaypoint + 1]) {
+      this.nextWaypoint++;
+    }
+    this.x += (distX > 0 ? this.speed : this.speed * -1) * this._time.delta;
+    this.y += (distY > 0 ? this.speed : this.speed * -1) * this._time.delta;
   }
 }
 

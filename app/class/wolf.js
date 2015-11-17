@@ -4,7 +4,7 @@ class Wolf extends Monster {
   constructor() {
     super();
     this.hp = 10;
-    this.speed = 0.6;
+    this.speed = 0.06;
     this.color = 'rgba(20, 20, 20, 0.8)';
     this.size = 20;
     this.cost = 25;
