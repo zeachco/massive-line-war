@@ -4,10 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "postinstall": "npm start",
     "start": "webpack-dev-server --progress --colors --watch",
-    "stop": "webpack --progress --colors",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "webpack --progress && eslint public/bundle.js && exit 0"
   },
   "author": "Olivier Rousseau",
   "license": "MIT",
@@ -15,10 +13,12 @@
     "babel-core": "^5.8.33",
     "babel-loader": "^5.3.3",
     "css-loader": "^0.21.0",
+    "eslint": "^1.9.0",
     "firebase": "^2.3.1",
     "style-loader": "^0.13.0",
     "uglify-loader": "^1.2.0",
     "webpack": "^1.12.2",
+    "webpack-dev-server": "^1.12.1",
     "webpack-livereload-plugin": "^0.4.0",
     "webpack-notifier": "^1.2.1"
   }
