@@ -42,7 +42,9 @@ class PlayerManager {
   }
 
   remoteCreate() {
-    let name = prompt('what\'s your name?', 'Anonymous defender');
+    utils.prompt('what\'s your name?', 'Anonymous defender', this._remoteCreate.bind(this));
+  }
+  _remoteCreate(name) {
     if (name) {
       let insertion = firebasePlayers.push();
       this.localID = insertion.key();

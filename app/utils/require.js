@@ -1,3 +1,6 @@
+
+utils.undefinedFn = function() {};
+
 utils.require = function(obj, args, all = true) {
   var some = 0;
   args.forEach(function(arg) {
