@@ -1,7 +1,7 @@
-import BaseObject from './base-object'
+import BaseObject from './base-object';
 class Grid extends BaseObject {
   constructor(width, height) {
-    super()
+    super();
     this.tile = {};
     this.tile.width = width;
     this.tile.height = height;

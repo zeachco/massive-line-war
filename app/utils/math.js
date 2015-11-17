@@ -7,4 +7,4 @@
  */
 utils.round = function(value, base, method = 'floor') {
   return Math[method](value / base) * base;
-}
+};

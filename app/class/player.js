@@ -6,7 +6,7 @@ class Player {
     firebasePlayers.child(id).on('value', this.init.bind(this));
   }
   init() {
-    console.log(arguments);
+    window.console.log(arguments);
   }
 }
 

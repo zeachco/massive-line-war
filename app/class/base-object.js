@@ -24,7 +24,7 @@ class BaseObject {
       this._time = BaseObject._time;
       this.update(BaseObject.viewport);
     } else {
-      console.warn(`No update method for ${this.constructor.name}`);
+      window.console.warn(`No update method for ${this.constructor.name}`);
     }
   }
 
@@ -40,7 +40,7 @@ BaseObject.updateAll = function() {
     last: this._time.now || now,
     now: now,
     delta : this._time.now - this._time.last
-  }
+  };
 
   BaseObject.all.forEach(function(d) {
     if (d.updatable) {
@@ -50,4 +50,4 @@ BaseObject.updateAll = function() {
   return this;
 };
 
-export default BaseObject
+export default BaseObject;

@@ -1,4 +1,4 @@
-import Player from './player';
+// import Player from './player';
 
 var Firebase = require('firebase');
 var firebasePlayers = require('database').child('players');
@@ -11,12 +11,9 @@ class PlayerManager {
   }
 
   update(data) {
-    console.log('players changes', data.val());
     this.localPlayer = null;
     data.forEach(function(snap) {
-      console.log(snap.val(), snap.key(), this.localID);
       if (snap.key() === this.localID) {
-        console.info(`Player reconnected with ${snap.val().name} (${snap.key()})`);
         this.localPlayer = snap.val();
       }
     }.bind(this));

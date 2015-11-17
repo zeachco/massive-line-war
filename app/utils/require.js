@@ -16,4 +16,4 @@ utils.require = function(obj, args, all = true) {
   if (!all && some === 0) {
     throw `at least one of the following keys must exit:\n${args.join(', ')}`;
   }
-}
+};

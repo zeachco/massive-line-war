@@ -16,7 +16,7 @@ class Monster extends BaseObject {
     } else if (this.size > 0) {
       this.size -= 1;
     } else {
-      console.log(this.constructor.name + ' died');
+      window.console.log(this.constructor.name + ' died');
       this._dirty = false;
     }
     this.hpPercent = this._hp / this.hp;
@@ -56,7 +56,7 @@ class Monster extends BaseObject {
     }
   }
   move() {
-    let targetWaypoint = app.path.waypoints[this.nextWaypoint]
+    let targetWaypoint = app.path.waypoints[this.nextWaypoint];
     let distX = targetWaypoint.x - this.x;
     let distY = targetWaypoint.y - this.y;
     let distance = Math.sqrt(Math.pow(distX, 2) + Math.pow(distY, 2));

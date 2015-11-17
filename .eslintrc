@@ -10,7 +10,9 @@ rules:
     - unix
   semi:
     - 2
-    - always
+    - always    
+ecmaFeatures:
+  modules: true
 env:
   es6: true
   node: true

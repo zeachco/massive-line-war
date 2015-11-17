@@ -4,7 +4,7 @@ class Viewport {
     this.canvas.className = 'viewport';
     this.canvas.width = width;
     this.canvas.height = height;
-    this.ctx = this.canvas.getContext("2d");
+    this.ctx = this.canvas.getContext('2d');
     this.mouse = {};
   }
   get width() {
@@ -29,4 +29,4 @@ class Viewport {
   }
 }
 
-export default Viewport
+export default Viewport;

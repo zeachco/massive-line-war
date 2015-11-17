@@ -15,7 +15,7 @@ Proto.$circle = function(opt) {
     this.stroke();
     this.lineWidth = opt.lineWidth || 1;
   }
-}
+};
 
 Proto.$line = function(x1, y1, x2, y2) {
   // utils.require(arguments, ['x1', 'y1', 'x2', 'y2']);
@@ -26,5 +26,5 @@ Proto.$line = function(x1, y1, x2, y2) {
 };
 
 Proto.$cls = function() {
-  this.clearRect(0, 0, this.canvas.width, this.canvas.height)
-}
+  this.clearRect(0, 0, this.canvas.width, this.canvas.height);
+};

@@ -18,7 +18,6 @@ class Renderer {
     this.loop = false;
   }
   render() {
-    var canvas = this.viewport.canvas;
     this.viewport.ctx.$cls();
     BaseObject.updateAll();
     window.requestAnimationFrame(this.render.bind(this));
