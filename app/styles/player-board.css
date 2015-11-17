@@ -1,0 +1,17 @@
+player-board {
+  position: fixed;
+  top: 1em;
+  right: 1em;
+  box-shadow: 0 0 5px black;
+  border-radius: 1em;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  text-shadow: 0 0 2px black;
+  padding: 1em 0 1em 1em;
+}
+player-board td{
+  padding-right:.5em;
+}
+player-board .local{
+  color: yellow;
+}
