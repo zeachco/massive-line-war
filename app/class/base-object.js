@@ -28,6 +28,10 @@ class BaseObject {
     }
   }
 
+  remove() {
+    BaseObject.all.splice(this._index, 1);
+  }
+
 }
 
 BaseObject.all = [];
@@ -39,10 +43,11 @@ BaseObject.updateAll = function() {
   this._time = {
     last: this._time.now || now,
     now: now,
-    delta : this._time.now - this._time.last
+    delta: this._time.now - this._time.last
   };
-
-  BaseObject.all.forEach(function(d) {
+  
+  BaseObject.all.forEach(function(d, i) {
+    d._index = i;
     if (d.updatable) {
       d._update();
     }

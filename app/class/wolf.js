@@ -3,6 +3,7 @@ import Monster from './monster';
 class Wolf extends Monster {
   constructor() {
     super();
+    this.imageUrl = '/images/creeps/wolf.png';
     this.hp = 10;
     this.speed = 0.06;
     this.color = 'rgba(20, 20, 20, 0.8)';
