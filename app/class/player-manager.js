@@ -1,8 +1,7 @@
-// import Player from './player';
+import Player from './player';
 
 var Firebase = require('firebase');
 var firebasePlayers = require('database').child('players');
-// firebasePlayers.set({}); // reset list
 var store = window.localStorage;
 
 class PlayerManager {
@@ -14,7 +13,7 @@ class PlayerManager {
     this.localPlayer = null;
     data.forEach(function(snap) {
       if (snap.key() === this.localID) {
-        this.localPlayer = snap.val();
+        this.localPlayer = new Player(snap);
       }
     }.bind(this));
     if (!this.localPlayer) {

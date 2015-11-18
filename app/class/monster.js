@@ -24,6 +24,7 @@ class Monster extends BaseObject {
     } else if (this.size > 0) {
       this.size -= 1;
     } else {
+      app.manager.localPlayer.score += this.bounty;
       window.console.log(this.constructor.name + ' died');
       this._dirty = false;
     }

@@ -1,12 +1,26 @@
 var firebasePlayers = require('database').child('players');
 
 class Player {
-  constructor(id) {
-    this.id = id;
-    firebasePlayers.child(id).on('value', this.init.bind(this));
+  constructor(snap) {
+    this.$id = snap.key();
+    let val = snap.val();
+    for (var key in val) {
+      if (val.hasOwnProperty(key)) {
+        this[key] = val[key];
+      }
+    }
+    // firebasePlayers.child(id).on('value', this.init.bind(this));
   }
-  init() {
-    window.console.log(arguments);
+
+  set score(val) {
+    this._score = val;
+    firebasePlayers.child(this.$id).update({
+      score: this._score
+    });
+  }
+
+  get score() {
+    return this._score || 0;
   }
 }
 
