@@ -37,6 +37,10 @@ var loaders = [{
 }, {
   test: /\.gif$/,
   loader: 'url?name=img/[name].[ext]&mimetype=image/gif'
+}, {
+  test: /\.js$/,
+  loader: 'eslint-loader',
+  exclude: /node_modules/
 }];
 
 module.exports = {
@@ -45,12 +49,12 @@ module.exports = {
     extensions: ['', '.webpack.js', '.web.js', '.js']
   },
   // devtool: "source-map",
-  context: __dirname + "/app",
+  context: __dirname + '/app',
   entry: path.resolve(__dirname, dirs.app),
   devServer: devServer,
   output: {
     path: path.resolve(__dirname, devServer.contentBase),
-    filename: dirs.bundleName,
+    filename: dirs.bundleName
   },
   module: {
     loaders: loaders
