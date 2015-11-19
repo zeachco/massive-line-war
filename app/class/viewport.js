@@ -22,12 +22,11 @@ class Viewport {
     this.mouse = this.projection(ev.pageX, ev.pageY);
   }
   projection(x, y) {
-    let winWidth = window.innerWidth;
-    let width = Math.min(this.canvas.width, winWidth);
-    let padding = (winWidth - width) / 2;
+    let width = Math.min(this.canvas.width, window.innerWidth);
+    let pos = this.canvas.getBoundingClientRect();
     let val = {
-      x: x * this.canvas.width / width - padding,
-      y: y * this.canvas.height / width
+      x: x * this.canvas.width / width - pos.left,
+      y: y * this.canvas.height / width - pos.top
     };
     return val;
   }
