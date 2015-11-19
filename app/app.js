@@ -23,6 +23,17 @@ app.renderer.start();
 app.grid = new Grid(gw / 20, gh / 20);
 
 app.manager = new PlayerManager();
+app.manager.onLocalPlayer = function() {
+  for (var i = 0; i < 200; i++) {
+    setTimeout(function() {
+      app.sheep = new Sheep();
+      app.sheep.spawn(200, 5);
+
+      app.wolf = new Wolf();
+      app.wolf.spawn(100, 5);
+    }, i * 200);
+  }
+};
 
 app.path = new Path();
 app.path.add(200, 30);
@@ -31,13 +42,3 @@ app.path.add(100, 150);
 app.path.add(100, 450);
 app.path.add(400, 450);
 app.path.add(400, 600);
-
-for (var i = 0; i < 200; i++) {
-  setTimeout(function() {
-    app.sheep = new Sheep();
-    app.sheep.spawn(200, 5);
-
-    app.wolf = new Wolf();
-    app.wolf.spawn(100, 5);
-  }, i * 200);
-}

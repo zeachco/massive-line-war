@@ -7,6 +7,7 @@ var store = window.localStorage;
 class PlayerManager {
   constructor() {
     firebasePlayers.on('value', this.update.bind(this));
+    this.onLocalPlayer = utils.undefinedFn;
   }
 
   update(data) {
@@ -56,8 +57,8 @@ class PlayerManager {
       insertion.onDisconnect().remove();
     }
   }
-
   createBoard() {
+    this.onLocalPlayer();
     this.board = document.createElement('player-board');
     document.body.appendChild(this.board);
     return this.board;
