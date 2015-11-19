@@ -12,13 +12,13 @@ Proto.$circle = function(opt) {
   }
   if (opt.stroke) {
     this.strokeStyle = opt.stroke;
-    this.stroke();
     this.lineWidth = opt.lineWidth || 1;
+    this.stroke();
   }
 };
 
 Proto.$line = function(x1, y1, x2, y2) {
-  // utils.require(arguments, ['x1', 'y1', 'x2', 'y2']);
+  utils.require(arguments, 4);
   this.beginPath();
   this.moveTo(x1, y1);
   this.lineTo(x2, y2);
