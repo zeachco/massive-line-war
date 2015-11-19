@@ -21,7 +21,7 @@ class Monster extends BaseObject {
   update(viewport) {
     if (this._hp > 0) {
       this._hp += -0.003;
-    } else if (this.size > 0) {
+    } else if (this.size > 1) {
       this.size -= 1;
     } else {
       app.manager.localPlayer.score += this.bounty;
