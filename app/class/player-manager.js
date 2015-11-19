@@ -6,7 +6,7 @@ var store = window.localStorage;
 
 class PlayerManager {
   constructor() {
-    firebasePlayers.on('value', this.update.bind(this));
+    firebasePlayers.orderByChild('score').on('value', this.update.bind(this));
     this.onLocalPlayer = utils.undefinedFn;
   }
 
@@ -42,7 +42,7 @@ class PlayerManager {
   }
 
   remoteCreate() {
-    utils.prompt('what\'s your name?', 'Anonymous defender', this._remoteCreate.bind(this));
+    utils.prompt('What\'s your name?', 'Anonymous defender', this._remoteCreate.bind(this));
   }
   _remoteCreate(name) {
     if (name) {
@@ -70,7 +70,11 @@ class PlayerManager {
     players.forEach(function(player) {
       let p = player.val();
       let className = this.localID == player.key() ? 'local' : 'remote';
-      rows += `<tr class="${className}"><td>${p.name}</td><td>${p.score || '0'}</td></tr>`;
+      rows += `<tr class="${className}">
+                <td>${p.name}</td>
+                <td>${p.score || '0'}</td>
+                <td>${p.money || '0'}$</td>
+              </tr>`;
     }.bind(this));
     this.board.innerHTML = `<table>${rows}</table>`;
   }
