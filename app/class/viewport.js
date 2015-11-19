@@ -4,6 +4,7 @@ class Viewport {
     this.canvas.className = 'viewport';
     this.canvas.width = width;
     this.canvas.height = height;
+    this.canvas.style['max-width'] = width + 'px';
     this.ctx = this.canvas.getContext('2d');
     this.mouse = {};
   }
@@ -21,9 +22,12 @@ class Viewport {
     this.mouse = this.projection(ev.pageX, ev.pageY);
   }
   projection(x, y) {
+    let winWidth = window.innerWidth;
+    let width = Math.min(this.canvas.width, winWidth);
+    let padding = (winWidth - width) / 2;
     let val = {
-      x: x * this.canvas.width / window.innerWidth,
-      y: y * this.canvas.height / window.innerWidth // using width as ratio is keept for canvas
+      x: x * this.canvas.width / width - padding,
+      y: y * this.canvas.height / width
     };
     return val;
   }

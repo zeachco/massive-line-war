@@ -51,7 +51,7 @@ module.exports = {
     root: path.resolve('./app'),
     extensions: ['', '.webpack.js', '.web.js', '.js']
   },
-  // devtool: "source-map",
+  devtool: 'source-map',
   context: __dirname + '/app',
   entry: path.resolve(__dirname, dirs.app),
   devServer: devServer,
