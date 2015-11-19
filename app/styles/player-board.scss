@@ -8,10 +8,10 @@ player-board {
   color: white;
   text-shadow: 0 0 2px black;
   padding: 1em 0 1em 1em;
-}
-player-board td{
-  padding-right:.5em;
-}
-player-board .local{
-  color: yellow;
+  td {
+    padding-right: .5em;
+  }
+  .local {
+    color: yellow;
+  }
 }

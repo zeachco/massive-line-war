@@ -9,7 +9,6 @@ class Player {
         this[key] = val[key];
       }
     }
-    // firebasePlayers.child(id).on('value', this.init.bind(this));
   }
 
   set score(val) {

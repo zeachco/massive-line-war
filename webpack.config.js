@@ -41,6 +41,9 @@ var loaders = [{
   test: /\.js$/,
   loader: 'eslint-loader',
   exclude: /node_modules/
+}, {
+  test: /\.scss$/,
+  loader: 'style!css!sass'
 }];
 
 module.exports = {
