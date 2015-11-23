@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --progress --colors --watch",
-    "test": "esw app/* && exit 0"
+    "test": "eslint app/* && exit 0"
   },
   "author": "Olivier Rousseau",
   "license": "MIT",
