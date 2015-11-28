@@ -1,13 +1,12 @@
 import Viewport from 'class/viewport';
 import Renderer from 'class/renderer';
 import Path from 'class/path';
-import Sheep from 'class/sheep';
-import Wolf from 'class/wolf';
 import BaseObject from 'class/base-object';
 import LoginPrompt from 'class/login-prompt';
 import Player from 'class/player';
 import PlayerBoard from 'class/player-board';
 import Grid from 'class/grid';
+import WaveManager from 'class/wave-manager';
 
 var gw = 600;
 var gh = 600;
@@ -23,19 +22,8 @@ database.onAuth(function (auth) {
   }
   app.board = new PlayerBoard();
   app.localPlayer = new Player(auth);
-  for (var i = 0; i < 500; i++) {
-    setTimeout(function () {
-      if (Math.random() > 0.6) {
-        app.sheep = new Sheep();
-        app.sheep.spawn(200, 5);
-      }
-
-      if (Math.random() > 0.9) {
-        app.wolf = new Wolf();
-        app.wolf.spawn(100, 5);
-      }
-    }, i * 200);
-  }
+  app.waveManager = new WaveManager(app.localPlayer.uid);
+  app.waveManager.startNextWave();
 });
 
 app.viewport = new Viewport(gw, gh);
