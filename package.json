@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --progress --colors --watch",
-    "test": "eslint app/* && exit 0"
+    "test": "eslint app/* && exit 0",
+    "stop": "webpack --progress --colors --optimize-minimize --optimize-occurence-order && scp -r public/* zeachco.com@zeachco.com:~/public_html"
   },
   "author": "Olivier Rousseau",
   "license": "MIT",
@@ -22,7 +23,7 @@
     "sass-loader": "^3.1.1",
     "style-loader": "^0.13.0",
     "uglify-loader": "^1.2.0",
-    "webpack": "^1.12.2",
+    "webpack": "^1.12.9",
     "webpack-dev-server": "^1.12.1",
     "webpack-livereload-plugin": "^0.4.0",
     "webpack-notifier": "^1.2.1"
