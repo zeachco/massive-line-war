@@ -1,11 +1,21 @@
 var firebasePlayers = require('database').child('players');
+var updateThrottle = 150; // ms
 
 class FirebaseModel {
   constructor(auth) {
-    this.model = {};
+    this._model = {};
     this._auth = auth;
     this.ref = firebasePlayers.child(this._auth.uid);
-    this.ref.once('value', this.set.bind(this));
+    this.ref.once('value', this.get.bind(this));
+  }
+
+  get model() {
+    return this._model;
+  }
+
+  set model(val) {
+    this._model = val;
+    this.sync();
   }
 
   get(snap) {
@@ -19,18 +29,18 @@ class FirebaseModel {
         this.model[key] = val[key];
       }
     }
-
   }
 
-  set() {
-
+  syncProceed() {
+    window.console.log('synced');
     firebasePlayers.child(this._auth.uid).set(this.model);
-    //
-    // this.ref.once('value', this.set.bind(this));
-
-
   }
 
+  sync() {
+    window.console.log('requested sync');
+    clearTimeout(this._throttle);
+    this._throttle = setTimeout(this.syncProceed.bind(this), updateThrottle);
+  }
 }
 
 export default FirebaseModel;
