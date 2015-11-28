@@ -14,9 +14,11 @@ class Player extends FirebaseModel {
   }
 
   addMoney(bounty) {
-    this.model.score += bounty;
-    this.model.money += bounty;
-    this.sync();
+    if (this.model.lives > 0) {
+      this.model.score += bounty;
+      this.model.money += bounty;
+      this.sync();
+    }
   }
 
   get lives() {
