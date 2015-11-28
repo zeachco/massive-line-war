@@ -14,17 +14,6 @@ window.app = {};
 
 var database = require('database');
 
-database.onAuth(function (auth) {
-  if (!auth) {
-    app.auth = app.auth || new LoginPrompt();
-    app.auth.render();
-    return;
-  }
-  app.board = new PlayerBoard();
-  app.localPlayer = new Player(auth);
-  app.waveManager = new WaveManager();
-});
-
 app.viewport = new Viewport(gw, gh);
 app.viewport.attach(document.body);
 
@@ -43,3 +32,14 @@ app.path.add(100, 150);
 app.path.add(100, 450);
 app.path.add(400, 450);
 app.path.add(400, 600);
+
+database.onAuth(function (auth) {
+  if (!auth) {
+    app.auth = app.auth || new LoginPrompt();
+    app.auth.render();
+    return;
+  }
+  app.board = new PlayerBoard();
+  app.localPlayer = new Player(auth);
+  app.waveManager = new WaveManager();
+});

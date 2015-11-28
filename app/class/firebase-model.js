@@ -1,4 +1,3 @@
-var firebasePlayers = require('database').child('players');
 var updateThrottle = 150; // ms
 
 class FirebaseModel {
@@ -10,8 +9,6 @@ class FirebaseModel {
   constructor(auth) {
     this._model = {};
     this._auth = auth;
-    this.ref = firebasePlayers.child(this._auth.uid);
-    this.ref.once('value', this.fetch.bind(this));
   }
 
   get model() {
@@ -33,7 +30,7 @@ class FirebaseModel {
   }
 
   syncProceed() {
-    firebasePlayers.child(this._auth.uid).set(this.model);
+    this.ref.set(this.model);
   }
 
   sync() {

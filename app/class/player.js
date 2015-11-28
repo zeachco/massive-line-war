@@ -1,5 +1,6 @@
 import FirebaseModel from './firebase-model';
 
+var firebasePlayers = require('database').child('players');
 var faces = require('cool-ascii-faces');
 
 class Player extends FirebaseModel {
@@ -11,6 +12,9 @@ class Player extends FirebaseModel {
       lives: 30,
       money: 100
     };
+
+    this.ref = firebasePlayers.child(this._auth.uid);
+    this.ref.once('value', this.fetch.bind(this));
   }
 
   addMoney(bounty) {

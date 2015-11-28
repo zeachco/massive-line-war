@@ -1,53 +1,73 @@
+var database = require('database');
+
 import FirebaseModel from './firebase-model';
 
-// require('./preload');
+var creepTimeOffset = 750;
+var waveInterval = 1000 * 30;
 
 import Sheep from './sheep';
 import Wolf from './wolf';
-
-var waveInterval = 1000 * 60 * 5;
 var maps = {
   sheep: Sheep,
   wolf: Wolf
 };
 
-var database = require('database');
-var waves = database.child('waves');
-
 class WaveManager extends FirebaseModel {
   constructor() {
     super(app.localPlayer._auth);
-    this.ref = waves.child(app.localPlayer._auth.uid);
+    this.queue = [];
+    this.ref = database.child('waves/' + app.localPlayer._auth.uid);
     this.ref.on('value', this.fetch.bind(this));
-    this.ref.once('value', this.nextWave.bind(this));
-    this.model = {
-      creeps: []
-    };
+    this.ref.set({
+      sheep: 5
+    });
+    this.nextWave();
   }
 
   fetch(snap) {
-    window.console.info(snap.val());
-    this.creeps = snap.val();
-    this.creeps = {
-      sheep: 60,
-      wolf: 90
-    };
+    var creeps = snap.val();
+    for (var type in creeps) {
+      var count = creeps[type];
+      for (var i = 0; i < count; i++) {
+        this.queue.push(type);
+      }
+    }
+  }
+
+  send(creeps) {
+    this.ref.set(creeps);
+  }
+
+  spawn(creepClass) {
+    let Cl = maps[creepClass]; //require('./' + type);
+    let creep = new Cl();
+    creep.spawn(200, 5);
+  }
+
+  nextCreep() {
+    if (this.queue.length === 0) {
+      this.endWave();
+      return;
+    }
+    var next = this.queue.splice(0, 1);
+    let Cl = maps[next]; //require('./' + type);
+    let creep = new Cl();
+    creep.spawn(200, 5);
+    setTimeout(this.nextCreep.bind(this), creepTimeOffset);
   }
 
   nextWave() {
-    var offset = 0;
-    for (let type in this.creeps) {
-      let count = this.creeps[type];
-      for (let i = 0; i < count; i++) {
-        offset++;
-        let Cl = maps[type]; //require('./' + type);
-        setTimeout(function () {
-          let creep = new Cl();
-          creep.spawn(200, 5);
-        }, offset * 250);
-      }
-    }
-    setTimeout(this.nextWave.bind(this), waveInterval);
+    window.console.info('next wave!', this.queue);
+    this.nextCreep();
+    clearTimeout(this._nextTimer);
+    this._nextTimer = setTimeout(this.nextWave.bind(this), waveInterval);
+  }
+
+  endWave() {
+    // this.ref.set({
+    //   sheep: 5
+    // });
+    // this.timeOffset = 0;
   }
 }
 
