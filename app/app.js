@@ -22,8 +22,7 @@ database.onAuth(function (auth) {
   }
   app.board = new PlayerBoard();
   app.localPlayer = new Player(auth);
-  app.waveManager = new WaveManager(app.localPlayer.uid);
-  app.waveManager.startNextWave();
+  app.waveManager = new WaveManager();
 });
 
 app.viewport = new Viewport(gw, gh);

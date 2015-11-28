@@ -2,6 +2,11 @@ var firebasePlayers = require('database').child('players');
 var updateThrottle = 150; // ms
 
 class FirebaseModel {
+  /**
+   * help having DRY and performant Sync from local to firebase
+   * @param  {[type]} auth Firebase auth object (reads uid from it)
+   * @return {[type]}      [description]
+   */
   constructor(auth) {
     this._model = {};
     this._auth = auth;
