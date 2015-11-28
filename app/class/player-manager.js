@@ -12,7 +12,7 @@ class PlayerManager {
 
   update(data) {
     this.localPlayer = null;
-    data.forEach(function(snap) {
+    data.forEach(function (snap) {
       if (snap.key() === this.localID) {
         this.localPlayer = new Player(snap);
       }
@@ -67,13 +67,13 @@ class PlayerManager {
   renderBoard(players) {
     this.board = this.board || this.createBoard();
     var rows = '';
-    players.forEach(function(player) {
+    players.forEach(function (player) {
       let p = player.val();
       let className = this.localID == player.key() ? 'local' : 'remote';
       rows += `<tr class="${className}">
                 <td>${p.name}</td>
                 <td>${p.score || '0'}</td>
-                <td>${p.money || '0'}$</td>
+                <td>${utils.money(p.money)}</td>
               </tr>`;
     }.bind(this));
     this.board.innerHTML = `<table>${rows}</table>`;

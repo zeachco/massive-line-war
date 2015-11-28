@@ -26,7 +26,7 @@ class Monster extends BaseObject {
     } else if (this.size > 1) {
       this.size -= 1;
     } else {
-      app.manager.localPlayer.addMoney(this.bounty);
+      app.localPlayer.addMoney(this.bounty);
       this._dirty = false;
     }
     this.hpPercent = this._hp / this.hp;

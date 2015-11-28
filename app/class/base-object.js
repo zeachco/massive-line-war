@@ -38,14 +38,14 @@ BaseObject.all = [];
 BaseObject._time = {};
 BaseObject.updateAll = function() {
 
-  var now = utils.getTime();
+  var now = Date.now();
 
   this._time = {
     last: this._time.now || now,
     now: now,
     delta: this._time.now - this._time.last
   };
-  
+
   BaseObject.all.forEach(function(d, i) {
     d._index = i;
     if (d.updatable) {
