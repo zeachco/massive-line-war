@@ -20,9 +20,6 @@ class FirebaseModel {
 
   get(snap) {
     let val = snap.val();
-    if (val === null) {
-      firebasePlayers.push(this.model);
-    }
     window.console.log(this, val);
     for (var key in val) {
       if (val.hasOwnProperty(key)) {
