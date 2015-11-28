@@ -8,7 +8,7 @@ class Player extends FirebaseModel {
     this.model = {
       name: faces(),
       score: 0,
-      lives: 5,
+      lives: 30,
       money: 100
     };
   }
@@ -16,6 +16,15 @@ class Player extends FirebaseModel {
   addMoney(bounty) {
     this.model.score += bounty;
     this.model.money += bounty;
+    this.sync();
+  }
+
+  get lives() {
+    return this.model.lives;
+  }
+
+  set lives(nb) {
+    this.model.lives = +nb;
     this.sync();
   }
 }

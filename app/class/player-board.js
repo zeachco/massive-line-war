@@ -1,4 +1,5 @@
 var firebasePlayers = require('database').child('players');
+var heart = '\u2764';
 
 class PlayerBoard {
   constructor() {
@@ -17,7 +18,7 @@ class PlayerBoard {
     players.forEach(function (player) {
       let p = player.val();
       let className = app.localPlayer._auth.uid == player.key() ? 'local' : 'remote';
-      let lives = p.lives < 5 ? '\u2764 '.repeat(p.lives) : `\u2764 x ${p.lives}`;
+      let lives = p.lives <= 5 ? heart.repeat(p.lives) : `${heart} x ${p.lives}`;
       rows = `<tr class="${className}">
                 <td>
                   ${p.name}
