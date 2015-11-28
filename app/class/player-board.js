@@ -12,17 +12,22 @@ class PlayerBoard {
   }
 
   render(players) {
-    window.console.log(players.val());
     this.board = this.board || this.createBoard();
     var rows = '';
     players.forEach(function (player) {
       let p = player.val();
       let className = app.localPlayer._auth.uid == player.key() ? 'local' : 'remote';
-      rows += `<tr class="${className}">
-                <td>${p.name}</td>
-                <td>${p.score || '0'}</td>
+      let lives = p.lives < 5 ? '\u2764 '.repeat(p.lives) : `\u2764 x ${p.lives}`;
+      rows = `<tr class="${className}">
+                <td>
+                  ${p.name}
+                </td>
+                <td>${p.score}</td>
+              </tr>
+              <tr class="${className} info">
+                <td>${lives}</td>
                 <td>${utils.money(p.money)}</td>
-              </tr>`;
+              </tr>` + rows;
     }.bind(this));
     this.board.innerHTML = `<table>${rows}</table>`;
   }

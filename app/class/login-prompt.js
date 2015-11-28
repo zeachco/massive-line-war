@@ -20,7 +20,7 @@ class LoginPrompt {
     return e;
   }
   start(err) {
-    window.console.log(err);
+    window.console.error(err);
     if (err) {
       this.render();
       return;

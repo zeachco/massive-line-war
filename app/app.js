@@ -23,7 +23,6 @@ database.onAuth(function (auth) {
   }
   app.board = new PlayerBoard();
   app.localPlayer = new Player(auth);
-  window.console.log(auth.uid);
   for (var i = 0; i < 200; i++) {
     setTimeout(function () {
       app.sheep = new Sheep();

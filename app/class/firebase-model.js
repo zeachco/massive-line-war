@@ -6,7 +6,7 @@ class FirebaseModel {
     this._model = {};
     this._auth = auth;
     this.ref = firebasePlayers.child(this._auth.uid);
-    this.ref.once('value', this.get.bind(this));
+    this.ref.once('value', this.fetch.bind(this));
   }
 
   get model() {
@@ -18,9 +18,8 @@ class FirebaseModel {
     this.sync();
   }
 
-  get(snap) {
+  fetch(snap) {
     let val = snap.val();
-    window.console.log(this, val);
     for (var key in val) {
       if (val.hasOwnProperty(key)) {
         this.model[key] = val[key];
@@ -29,7 +28,6 @@ class FirebaseModel {
   }
 
   syncProceed() {
-    window.console.debug('synced');
     firebasePlayers.child(this._auth.uid).set(this.model);
   }
 

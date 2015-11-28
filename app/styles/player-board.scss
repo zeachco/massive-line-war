@@ -1,17 +1,29 @@
+$local-color: yellow;
+$remote-color: white;
 player-board {
   position: fixed;
-  top: 1em;
-  right: 1em;
+  top: 0;
+  right: 0;
   box-shadow: 0 0 5px black;
-  border-radius: 1em;
+  border-radius: 0 0 0 1em ;
   background: rgba(0, 0, 0, 0.8);
-  color: white;
+  color: $remote-color;
   text-shadow: 0 0 2px black;
   padding: 1em 0 1em 1em;
   td {
-    padding-right: .5em;
+    &:first {
+      font-weight: 700;
+    }
+    padding-right: 0.5em;
   }
   .local {
-    color: yellow;
+    color: $local-color;
+    &.info {
+      color: darken($local-color, 15);
+    }
+  }
+  .info {
+    color: darken($remote-color, 15);
+    font-size: 0.8em;
   }
 }

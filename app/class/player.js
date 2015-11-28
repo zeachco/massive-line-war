@@ -8,7 +8,7 @@ class Player extends FirebaseModel {
     this.model = {
       name: faces(),
       score: 0,
-      lives: 15,
+      lives: 5,
       money: 100
     };
   }
