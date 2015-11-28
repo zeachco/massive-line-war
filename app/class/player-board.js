@@ -1,16 +1,13 @@
 import Player from './player';
-
-var Firebase = require('firebase');
 var firebasePlayers = require('database').child('players');
-var store = window.localStorage;
 
-class PlayerManager {
+class PlayerBoard {
   constructor() {
     firebasePlayers.orderByChild('score').on('value', this.update.bind(this));
-    this.onLocalPlayer = utils.undefinedFn;
   }
 
   update(data) {
+    window.console.log('update');
     this.localPlayer = null;
     data.forEach(function (snap) {
       if (snap.key() === this.localID) {
@@ -24,39 +21,6 @@ class PlayerManager {
     this.renderBoard(data);
   }
 
-  get localID() {
-    if (this._localID) {
-      return this._localID;
-    }
-    this._localID = store.getItem('player') || 'null';
-    if (this._localID !== 'null') {
-      return this._localID;
-    } else {
-      delete this._localID;
-      return null;
-    }
-  }
-  set localID(val) {
-    this._localID = val;
-    store.setItem('player', val);
-  }
-
-  remoteCreate() {
-    utils.prompt('What\'s your name?', 'Anonymous defender', this._remoteCreate.bind(this));
-  }
-  _remoteCreate(name) {
-    if (name) {
-      let insertion = firebasePlayers.push();
-      this.localID = insertion.key();
-      insertion.update({
-        name: name
-      });
-      insertion.update({
-        startedAt: Firebase.ServerValue.TIMESTAMP
-      });
-      insertion.onDisconnect().remove();
-    }
-  }
   createBoard() {
     this.onLocalPlayer();
     this.board = document.createElement('player-board');
@@ -80,4 +44,4 @@ class PlayerManager {
   }
 }
 
-export default PlayerManager;
+export default PlayerBoard;

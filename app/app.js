@@ -6,7 +6,7 @@ import Wolf from 'class/wolf';
 import BaseObject from 'class/base-object';
 import LoginPrompt from 'class/login-prompt';
 import Player from 'class/player';
-// import PlayerManager from 'class/player-manager';
+import PlayerBoard from 'class/player-board';
 import Grid from 'class/grid';
 
 var gw = 600;
@@ -21,6 +21,7 @@ database.onAuth(function (auth) {
     app.auth.render();
     return;
   }
+  app.board = new PlayerBoard();
   app.localPlayer = new Player(auth);
   window.console.log(auth.uid);
   for (var i = 0; i < 200; i++) {

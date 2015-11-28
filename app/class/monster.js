@@ -20,7 +20,7 @@ class Monster extends BaseObject {
   }
   update(viewport) {
     if (this._hp > 0) {
-      if (Math.random() > 0.1) {
+      if (Math.random() > 0.5) {
         this._hp += Math.random() * -0.1;
       }
     } else if (this.size > 1) {

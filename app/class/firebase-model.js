@@ -32,12 +32,11 @@ class FirebaseModel {
   }
 
   syncProceed() {
-    window.console.log('synced');
+    window.console.debug('synced');
     firebasePlayers.child(this._auth.uid).set(this.model);
   }
 
   sync() {
-    window.console.log('requested sync');
     clearTimeout(this._throttle);
     this._throttle = setTimeout(this.syncProceed.bind(this), updateThrottle);
   }
