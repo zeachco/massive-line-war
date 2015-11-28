@@ -36,17 +36,18 @@ class BaseObject {
 
 BaseObject.all = [];
 BaseObject._time = {};
-BaseObject.updateAll = function() {
+var maxLatencyFPS = 1000 / 35;
+BaseObject.updateAll = function () {
 
   var now = Date.now();
 
   this._time = {
     last: this._time.now || now,
     now: now,
-    delta: this._time.now - this._time.last
+    delta: Math.min(maxLatencyFPS, this._time.now - this._time.last)
   };
 
-  BaseObject.all.forEach(function(d, i) {
+  BaseObject.all.forEach(function (d, i) {
     d._index = i;
     if (d.updatable) {
       d._update();
