@@ -29,11 +29,11 @@ class LoginPrompt {
   render() {
     this.dialog = new DialogBox();
     this.dialog.html = '<h3>Create an account</h3>';
-    this.createLink('anonymous', 'Anonymous');
     this.createLink('github', 'Github');
     this.createLink('facebook', 'Facebook');
-    this.createLink('google', 'Google');
+    // this.createLink('google', 'Google'); // app redirect error
     this.createLink('twitter', 'Twitter');
+    this.createLink('anonymous', 'Nah!');
   }
 }
 
