@@ -32,7 +32,14 @@ class Monster extends BaseObject {
     }
     this.hpPercent = this._hp / this.hp;
     this.move();
+    this.checkCollisions();
     this.draw(viewport.ctx);
+  }
+  checkCollisions(){
+    let collisions = app.collisionControler.creepToBullets(this);
+    collisions.forEach(function(o){
+      this.hp -= o.dmg;
+    });
   }
   draw(ctx) {
     ctx.$img({

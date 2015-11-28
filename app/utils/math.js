@@ -12,3 +12,7 @@ utils.round = function (value, base, method = 'floor') {
 utils.money = function (value = 0) {
   return utils.round(value, 0.01) + '&nbsp;$';
 };
+
+utils.distance = function(o1x, o1y, o2x, o2y){
+  return Math.sqrt(Math.pow(o1x - o2x, 2) + Math.pow((o1y - o2y),2));
+};
