@@ -1,0 +1,22 @@
+login-link {
+  display: inline-block;
+  padding: 0.5em 1em;
+  margin: 0.5em;
+  cursor: pointer;
+  border-radius: 5px;
+  box-shadow: inset 0 0 5px black;
+  color: #333;
+  text-shadow: 0 0 2px white;
+  background: rgba(0,0,0,0.1);
+  transition: all 300ms;
+  user-select: none;
+}
+login-link:hover {
+  color: #000;
+  background: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 5px black;
+}
+login-link:active {
+  background: rgba(255, 255, 255, 0.3);
+  box-shadow: inset 0 0 5px black;
+}

@@ -23,13 +23,7 @@ class HealthBar {
 
       // foreground
       ctx.fillStyle = 'green';
-      ctx.fillRect(x - size / 2, y - size, size*ratio, barHeight);
-
-    } else {
-
-      // inactive
-      ctx.fillStyle = 'black';
-      ctx.fillRect(x - size / 2, y - size, 20, barHeight);
+      ctx.fillRect(x - size / 2, y - size, size * ratio, barHeight);
 
     }
 

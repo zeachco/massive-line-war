@@ -20,12 +20,13 @@ class Monster extends BaseObject {
   }
   update(viewport) {
     if (this._hp > 0) {
-      this._hp += -0.003;
+      if (Math.random() > 0.5) {
+        this._hp += Math.random() * -0.1;
+      }
     } else if (this.size > 1) {
       this.size -= 1;
     } else {
-      app.manager.localPlayer.score += this.bounty;
-      window.console.log(this.constructor.name + ' died');
+      app.localPlayer.addMoney(this.bounty);
       this._dirty = false;
     }
     this.hpPercent = this._hp / this.hp;

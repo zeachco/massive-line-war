@@ -20,10 +20,15 @@ var devServer = {
   hot: true
 };
 
+var prefixer = '!autoprefixer-loader?browsers=last 2 versions';
+
 // Loaders
 var loaders = [{
   test: /\.css$/,
-  loader: 'style!css'
+  loader: 'style!css' + prefixer
+}, {
+  test: /\.scss$/,
+  loader: 'style!css' + prefixer + '!sass'
 }, {
   test: /\.js$/,
   exclude: /node_modules/,
@@ -41,9 +46,6 @@ var loaders = [{
   test: /\.js$/,
   loader: 'eslint-loader',
   exclude: /node_modules/
-}, {
-  test: /\.scss$/,
-  loader: 'style!css!sass'
 }];
 
 module.exports = {

@@ -1,25 +1,39 @@
-var firebasePlayers = require('database').child('players');
+import FirebaseModel from './firebase-model';
 
-class Player {
-  constructor(snap) {
-    this.$id = snap.key();
-    let val = snap.val();
-    for (var key in val) {
-      if (val.hasOwnProperty(key)) {
-        this[key] = val[key];
-      }
-    }
-  }
+var faces = require('cool-ascii-faces');
 
-  set score(val) {
-    this._score = val;
-    firebasePlayers.child(this.$id).update({
-      score: this._score
-    });
+class Player extends FirebaseModel {
+  constructor(auth) {
+    super(auth);
+    this.model.name = faces();
   }
 
   get score() {
-    return this._score || 0;
+    return this.model.score || 0;
+  }
+  set score(val) {
+    return this.model.score = val;
+  }
+
+  get money() {
+    return this.model.money || 100;
+  }
+  set money(val) {
+    return this.model.money = val;
+  }
+
+  get lives() {
+    return this.model.lives || 15;
+  }
+  set lives(val) {
+    return this.model.lives = val;
+  }
+
+
+  addMoney(bounty) {
+    this.score += bounty;
+    this.money += bounty;
+    this.sync();
   }
 }
 
