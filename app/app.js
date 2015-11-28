@@ -32,8 +32,6 @@ database.onAuth(function (auth) {
       app.wolf.spawn(100, 5);
     }, i * 200);
   }
-}, function () {
-  window.console.log('NAAAAA');
 });
 
 app.viewport = new Viewport(gw, gh);
