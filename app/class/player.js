@@ -1,23 +1,14 @@
-var firebasePlayers = require('database').child('players');
 
-class Player {
+import FirebaseModel from './firebase-model';
+
+class Player extends FirebaseModel {
   constructor(auth) {
-    this._auth = auth;
-    this._money = 100;
-    this._score = 0;
-    firebasePlayers.set(this);
-    this.ref = firebasePlayers.child(this._auth.uid);
-    this.ref.once('value', this.set.bind(this));
-  }
-
-  set(snap) {
-    let val = snap.val();
-    window.console.log(this, val);
-    for (var key in val) {
-      if (val.hasOwnProperty(key)) {
-        this[key] = val[key];
-      }
-    }
+    super(auth);
+    this.model.online = true;
+    this.model.money = this.money || 100;
+    this.model.score = this.score || 0;
+    this.model.lives = this.lives || 15;
+    this.set();
   }
 
   addMoney(bounty) {
@@ -41,9 +32,9 @@ class Player {
 
   set money(val) {
     this._money = val;
-    firebasePlayers.child(this.$id).update({
-      money: this._money
-    });
+    // firebasePlayers.child(this.$id).update({
+    //   money: this._money
+    // });
   }
 
   get money() {
