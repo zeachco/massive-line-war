@@ -24,6 +24,9 @@ class Player extends FirebaseModel {
   }
 
   set lives(nb) {
+    if (this.model.lives < 1 && nb < 1) {
+      return; // no update for dead peoples, they don't deserve it
+    }
     this.model.lives = +nb;
     this.sync();
   }

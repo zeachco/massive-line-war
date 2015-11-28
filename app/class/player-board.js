@@ -18,7 +18,14 @@ class PlayerBoard {
     players.forEach(function (player) {
       let p = player.val();
       let className = app.localPlayer._auth.uid == player.key() ? 'local' : 'remote';
-      let lives = p.lives <= 5 ? heart.repeat(p.lives) : `${heart} x ${p.lives}`;
+      var livesTpl;
+      if (p.lives > 5) {
+        livesTpl = `${heart} x ${p.lives}`;
+      } else if (p.lives > 0) {
+        livesTpl = heart.repeat(p.lives);
+      } else {
+        livesTpl = 'DWEAD!';
+      }
       rows = `<tr class="${className}">
                 <td>
                   ${p.name}
@@ -26,7 +33,7 @@ class PlayerBoard {
                 <td>${p.score}</td>
               </tr>
               <tr class="${className} info">
-                <td>${lives}</td>
+                <td>${livesTpl}</td>
                 <td>${utils.money(p.money)}</td>
               </tr>` + rows;
     }.bind(this));
