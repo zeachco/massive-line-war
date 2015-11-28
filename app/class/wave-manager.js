@@ -1,5 +1,7 @@
 import FirebaseModel from './firebase-model';
 
+// require('./preload');
+
 import Sheep from './sheep';
 import Wolf from './wolf';
 
@@ -21,7 +23,6 @@ class WaveManager extends FirebaseModel {
     this.model = {
       creeps: []
     };
-    window.console.log(maps);
   }
 
   fetch(snap) {
@@ -39,7 +40,7 @@ class WaveManager extends FirebaseModel {
       let count = this.creeps[type];
       for (let i = 0; i < count; i++) {
         offset++;
-        let Cl = maps[type];
+        let Cl = maps[type]; //require('./' + type);
         setTimeout(function () {
           let creep = new Cl();
           creep.spawn(200, 5);
@@ -47,19 +48,6 @@ class WaveManager extends FirebaseModel {
       }
     }
     setTimeout(this.nextWave.bind(this), waveInterval);
-    // for (var i = 0; i < 500; i++) {
-    //   setTimeout(function () {
-    //     if (Math.random() > 0.6) {
-    //       app.sheep = new Sheep();
-    //       app.sheep.spawn(200, 5);
-    //     }
-    //
-    //     if (Math.random() > 0.9) {
-    //       app.wolf = new Wolf();
-    //       app.wolf.spawn(100, 5);
-    //     }
-    //   }, i * 200);
-    // }
   }
 }
 
