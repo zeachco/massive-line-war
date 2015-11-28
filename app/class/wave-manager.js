@@ -64,10 +64,9 @@ class WaveManager extends FirebaseModel {
   }
 
   endWave() {
-    // this.ref.set({
-    //   sheep: 5
-    // });
-    // this.timeOffset = 0;
+    this.ref.set({
+      sheep: 1
+    });
   }
 }
 
