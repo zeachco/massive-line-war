@@ -4,6 +4,7 @@ import HealthBar from './health-bar';
 class Monster extends BaseObject {
   constructor() {
     super();
+    this.removeLives = 1;
   }
   spawn(x, y) {
     this.x = x;
@@ -46,6 +47,7 @@ class Monster extends BaseObject {
   move() {
     let targetWaypoint = app.path.waypoints[this.nextWaypoint];
     if (!targetWaypoint) {
+      app.localPlayer.lives -= this.removeLives;
       this.remove();
       return;
     }
