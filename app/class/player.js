@@ -1,8 +1,11 @@
 import FirebaseModel from './firebase-model';
 
+var faces = require('cool-ascii-faces');
+
 class Player extends FirebaseModel {
   constructor(auth) {
     super(auth);
+    this.model.name = faces();
   }
 
   get score() {
