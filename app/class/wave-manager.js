@@ -50,8 +50,8 @@ class WaveManager extends FirebaseModel {
       return;
     }
     var next = this.queue.splice(0, 1);
-    let Cl = maps[next]; //require('./' + type);
-    let creep = new Cl();
+    let ClassName = maps[next]; //require('./' + type);
+    let creep = new ClassName();
     creep.spawn(200, 5);
     setTimeout(this.nextCreep.bind(this), creepTimeOffset);
   }
