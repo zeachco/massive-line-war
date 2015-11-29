@@ -34,13 +34,13 @@ class WaveManager extends FirebaseModel {
     }
   }
 
-  send(creeps) {
-    this.ref.set(creeps);
+  send(creeps, uid = app.localPlayer._auth.uid) {
+    database.child('waves/' + uid).set(creeps);
   }
 
   spawn(creepClass) {
-    let Cl = maps[creepClass]; //require('./' + type);
-    let creep = new Cl();
+    let CreepClass = maps[creepClass]; //require('./' + type);
+    let creep = new CreepClass();
     creep.spawn(200, 5);
   }
 
