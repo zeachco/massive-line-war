@@ -6,6 +6,10 @@ class LoginPrompt {
   createLink(type, label) {
     let e = document.createElement('login-link');
     e.innerHTML = label;
+    if (type !== 'anonymous') {
+      e.className = 'icon';
+      e.style.backgroundImage = `url(/images/icons/${type}.png)`;
+    }
     e.addEventListener('click', function () {
       switch (type) {
       case 'anonymous':
@@ -33,7 +37,7 @@ class LoginPrompt {
     this.createLink('facebook', 'Facebook');
     // this.createLink('google', 'Google'); // app redirect error
     this.createLink('twitter', 'Twitter');
-    this.createLink('anonymous', 'Nah!');
+    this.createLink('anonymous', 'Not now');
   }
 }
 
