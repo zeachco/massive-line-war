@@ -5,6 +5,7 @@ class Monster extends BaseObject {
   constructor() {
     super();
     this.removeLives = 1;
+    this.index = 'creeps';
   }
   spawn(x, y) {
     this.x = x;

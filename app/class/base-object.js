@@ -28,8 +28,27 @@ class BaseObject {
     }
   }
 
+  get index() {
+    return this._index;
+  }
+
+  set index(val) {
+    this.removeFromIndex();
+    this._index = val;
+    BaseObject.all[val] = BaseObject.all[val] || [];
+    BaseObject.all[val].push(this);
+  }
+
+  removeFromIndex() {
+    if (this._index) {
+      let index = BaseObject.all[this.category].indexOf(this);
+      BaseObject.all[this.category].splice(index, 1);
+    }
+  }
+
   remove() {
-    BaseObject.all.splice(this._index, 1);
+    this.removeFromIndex();
+    BaseObject.all.splice(this._index_all, 1);
   }
 
 }
@@ -38,17 +57,15 @@ BaseObject.all = [];
 BaseObject._time = {};
 var maxLatencyFPS = 1000 / 35;
 BaseObject.updateAll = function () {
-
   var now = Date.now();
-
   this._time = {
     last: this._time.now || now,
     now: now,
     delta: Math.min(maxLatencyFPS, this._time.now - this._time.last)
   };
-
+  // loop
   BaseObject.all.forEach(function (d, i) {
-    d._index = i;
+    d._index_all = i;
     if (d.updatable) {
       d._update();
     }
