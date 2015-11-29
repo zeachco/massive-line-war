@@ -1,4 +1,4 @@
-import BaseObject from './base-object'
+import BaseObject from './base-object';
 
 class CollisionController {
   creepToBullets(creep) {
