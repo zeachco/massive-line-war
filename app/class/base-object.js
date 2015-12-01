@@ -41,8 +41,8 @@ class BaseObject {
 
   removeFromIndex() {
     if (this._index) {
-      let index = BaseObject.all[this.category].indexOf(this);
-      BaseObject.all[this.category].splice(index, 1);
+      let index = BaseObject.all[this._index].indexOf(this);
+      BaseObject.all[this._index].splice(index, 1);
     }
   }
 
