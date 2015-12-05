@@ -7,6 +7,7 @@ import Player from 'class/player';
 import PlayerBoard from 'class/player-board';
 import Grid from 'class/grid';
 import WaveManager from 'class/wave-manager';
+import CollisionController from 'class/collision-controller';
 
 var gw = 600;
 var gh = 600;
@@ -32,6 +33,8 @@ app.path.add(100, 150);
 app.path.add(100, 450);
 app.path.add(400, 450);
 app.path.add(400, 600);
+
+app.collisionController = new CollisionController();
 
 database.onAuth(function (auth) {
   if (!auth) {
