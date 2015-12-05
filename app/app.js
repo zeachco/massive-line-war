@@ -20,6 +20,7 @@ app.viewport.attach(document.body);
 
 // use this viewport for all BaseObject updates
 BaseObject.viewport = app.viewport;
+app.objects = BaseObject;
 
 app.renderer = new Renderer(app.viewport);
 app.renderer.start();
