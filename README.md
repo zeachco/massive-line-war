@@ -5,6 +5,3 @@
 
 ## Goal
 Tower defense war game where you can play against all your friends simultaneously
-
-## Demo
-http://zeachco.com
